@@ -8,14 +8,16 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
+    env:
+      working-directory: ./www/first.loc
 
     steps:
     - uses: actions/checkout@v2
 
     - name: Validate composer.json and composer.lock
-      run: cd ./www/first.loc/ && composer validate
+      run: composer validate
+      working-directory: ${{working-directory}}
 
     - name: Cache Composer packages
       id: composer-cache
@@ -29,6 +31,7 @@ jobs:
     - name: Install dependencies
       if: steps.composer-cache.outputs.cache-hit != 'true'
       run: composer install --prefer-dist --no-progress --no-suggest
+      working-directory: ${{working-directory}}
 
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
