@@ -1,2 +1,2 @@
 /.idea/
-/logs/docker/nginx/*.log
+/docker/logs/nginx/*.log
