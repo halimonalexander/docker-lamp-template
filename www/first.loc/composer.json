@@ -1,0 +1,6 @@
+{
+    "name": "halimonalexander/docker-lap-template",
+    "description": "Skeleton project to create Nginx - PHP-Fpm project",
+    "type": "project",
+    "require": {}
+}
